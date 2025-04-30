@@ -1,6 +1,6 @@
 // client/src/pages/Dashboard.jsx
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 const Dashboard = ({ token, handleLogout }) => {
   return (

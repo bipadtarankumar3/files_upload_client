@@ -1,16 +1,18 @@
-// client/src/pages/LoginPage.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 
 const LoginPage = ({ setIsLoggedIn, setToken }) => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  const navigate = useNavigate();  // Initialize navigate function
+
   const handleLogin = async () => {
-    if (!username || !password) {
-      setError('Please enter both username and password.');
+    if (!email || !password) {
+      setError('Please enter both email and password.');
       return;
     }
 
@@ -19,11 +21,12 @@ const LoginPage = ({ setIsLoggedIn, setToken }) => {
 
     try {
       const res = await axios.post('http://localhost:5000/login', {
-        username,
+        email,
         password,
       });
       setToken(res.data.token);
       setIsLoggedIn(true);
+      navigate('/dashboard');  // Redirect to the dashboard page after successful login
     } catch (err) {
       setError('Invalid credentials. Please try again.');
     } finally {
@@ -39,12 +42,12 @@ const LoginPage = ({ setIsLoggedIn, setToken }) => {
         {error && <div className="alert alert-danger">{error}</div>}
 
         <div className="mb-3">
-          <label className="form-label">Username</label>
+          <label className="form-label">Email</label>
           <input
             className="form-control"
             type="text"
-            placeholder="Enter username"
-            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter email"
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
