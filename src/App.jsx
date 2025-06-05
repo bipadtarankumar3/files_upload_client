@@ -7,6 +7,11 @@ import UploadPage from './pages/UploadPage';
 import UploadList from './pages/UploadList';
 import NotFoundPage from './pages/NotFoundPage';
 
+
+
+import { Toaster } from 'react-hot-toast';
+
+
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token') || '');
   const [isLoggedIn, setIsLoggedIn] = useState(!!token);
@@ -24,8 +29,19 @@ function App() {
   };
 
   return (
+
+    <>
+
+    <Toaster position="top-right" toastOptions={{ duration: 3000 }} />
+
+
+
     <Routes>
       {/* Login Route */}
+      <Route
+        path="/"
+        element={<LoginPage setIsLoggedIn={setIsLoggedIn} setToken={handleLogin} />}
+      />
       <Route
         path="/login"
         element={<LoginPage setIsLoggedIn={setIsLoggedIn} setToken={handleLogin} />}
@@ -50,6 +66,9 @@ function App() {
       {/* Catch-all for 404 */}
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
+
+    
+    </>
   );
 }
 
