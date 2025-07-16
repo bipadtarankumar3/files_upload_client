@@ -40,6 +40,12 @@ const Dashboard = ({ handleLogout }) => {
           <Menu.Item key="list" icon={<FileTextOutlined />}>
             <Link to="/dashboard/list">View Uploads</Link>
           </Menu.Item>
+          <Menu.Item key="list" icon={<FileTextOutlined />}>
+            <Link to="/dashboard/form">Dynamic Form</Link>
+          </Menu.Item>
+          <Menu.Item key="list" icon={<FileTextOutlined />}>
+            <Link to="/dashboard/form_builder">Dynamic Builder</Link>
+          </Menu.Item>
         </Menu>
 
         <div style={{ padding: '16px' }}>

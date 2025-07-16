@@ -10,6 +10,9 @@ import NotFoundPage from './pages/NotFoundPage';
 
 
 import { Toaster } from 'react-hot-toast';
+import DynamicForm from './pages/DynamicForm';
+import DynamicPage from './pages/DynamicPage';
+import FormBuilder from './pages/FormBuilder';
 
 
 function App() {
@@ -61,6 +64,8 @@ function App() {
         {/* Nested routes inside Dashboard */}
         <Route path="upload" element={<UploadPage token={token} />} />
         <Route path="list" element={<UploadList token={token} />} />
+        <Route path="form" element={<DynamicPage token={token} />} />
+        <Route path="form_builder" element={<FormBuilder token={token} />} />
       </Route>
 
       {/* Catch-all for 404 */}
